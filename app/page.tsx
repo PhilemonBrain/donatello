@@ -1,4 +1,15 @@
+'use client'
+
+import { useModal } from '@/components/ModalProvider'
+
 export default function Home() {
+  const { openModal } = useModal()
+
+  const handleContactClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    e.preventDefault()
+    openModal()
+  }
+
   return (
     <main>
       <section className="hero">
@@ -13,8 +24,8 @@ export default function Home() {
           </div>
 
           <div className="cta-buttons">
-            <a href="#contact" className="btn btn-primary">Request a Quote</a>
-            <a href="#contact" className="btn btn-secondary">Partner With Us</a>
+            <a href="#contact" className="btn btn-primary" onClick={handleContactClick}>Request a Quote</a>
+            <a href="#contact" className="btn btn-secondary" onClick={handleContactClick}>Partner With Us</a>
           </div>
         </div>
       </section>

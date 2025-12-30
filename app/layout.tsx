@@ -4,6 +4,7 @@ import type { Metadata } from 'next'
 import type { ReactNode } from 'react'
 import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
+import { ModalProvider } from '@/components/ModalProvider'
 
 const inter = Inter({
   subsets: ['latin'],
@@ -21,9 +22,11 @@ export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="en" className={inter.variable} suppressHydrationWarning>
       <body className={inter.className}>
-        <Navbar />
-        {children}
-        <Footer />
+        <ModalProvider>
+          <Navbar />
+          {children}
+          <Footer />
+        </ModalProvider>
       </body>
     </html>
   )
